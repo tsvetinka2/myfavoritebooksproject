@@ -1,0 +1,16 @@
+%table#books
+  %thead
+    %tr
+      %th{:class => @title_header}= link_to 'Book Title', books_path(:sort => 'title'), :id => 'title_header'
+      %th Genre
+      %th ISBN Number
+      %th{:class => @date_header}= link_to 'Publish Date', books_path(:sort => 'publish_date'), :id => 'publish_date_header'
+      %th More Info
+  %tbody
+    - @books.each do |book|
+      %tr
+        %td= book.title
+        %td= book.genre
+        %td= book.isbn_number
+        %td= book.publish_date
+        %td= link_to "More about #{book.title}", book_path(book)
